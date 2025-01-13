@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'standalone',
+  basePath: '/ai-content-remixer',
+  assetPrefix: '/ai-content-remixer/',
   images: {
     unoptimized: true,
   }

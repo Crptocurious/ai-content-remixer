@@ -2,23 +2,26 @@
   "name": "remix-tool",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Crptocurious.github.io/ai-content-remixer",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d .next"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.47.12",
-    "canvas-confetti": "^1.9.3",
-    "framer-motion": "^11.17.0",
+    "@supabase/supabase-js": "^2.39.3",
+    "canvas-confetti": "^1.9.2",
+    "framer-motion": "^10.18.0",
     "next": "latest",
-    "openai": "^4.0.0",
+    "openai": "^4.24.7",
     "react": "latest",
     "react-dom": "latest"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.9.3",
+    "@types/canvas-confetti": "^1.6.4",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
