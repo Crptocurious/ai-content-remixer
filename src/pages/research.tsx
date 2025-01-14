@@ -7,10 +7,9 @@ import { useRouter } from 'next/router'
 const fraunces = Fraunces({ 
   subsets: ['latin'],
   variable: '--font-fraunces',
-  display: 'swap',
 })
 
-export default function Home() {
+export default function Research() {
   const router = useRouter();
 
   const handleAuthClick = (e: React.MouseEvent) => {
@@ -19,13 +18,13 @@ export default function Home() {
   };
 
   return (
-    <div className={`min-h-screen bg-white ${fraunces.variable}`}>
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
               <Image 
                 src="/jenni-logo.svg" 
                 alt="Nani Logo" 
@@ -34,7 +33,7 @@ export default function Home() {
                 className="w-10"
               />
               <span className="text-2xl font-bold">nani</span>
-            </div>
+            </Link>
           </div>
 
           {/* Navigation Links */}
@@ -66,19 +65,19 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <main className={`${fraunces.variable} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20`}>
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-6xl font-serif mb-8 font-medium tracking-tight">
-            Meet Your Intelligent Content Assistant
+            Meet Your Intelligent Research Assistant
           </h1>
           <p className="text-xl text-gray-600 mb-12">
-            The AI-powered workspace to help you create, write, and organize content with ease.
+            The AI-powered workspace to help you read, write, and organize research with ease.
           </p>
           <button 
             onClick={handleAuthClick}
             className="inline-flex items-center justify-center bg-[#4339F2] text-white px-8 py-4 rounded-full text-lg hover:bg-[#372EE2] transition-colors"
           >
-            Start creating - it's free
+            Start writing - it's free
           </button>
 
           {/* Social Proof */}
@@ -87,11 +86,11 @@ export default function Home() {
               {'★'.repeat(5)}
             </div>
             <span className="text-gray-600 ml-2">
-              Loved by over 4 million copywriters
+              Loved by over 4 million academics
             </span>
           </div>
         </div>
       </main>
     </div>
-  );
+  )
 } 

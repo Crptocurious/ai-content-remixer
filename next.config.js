@@ -2,10 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  basePath: '/ai-content-remixer',
-  assetPrefix: '/ai-content-remixer/',
-  images: {
-    unoptimized: true,
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        canvas: false
+      }
+    }
+    return config
   }
 }
 

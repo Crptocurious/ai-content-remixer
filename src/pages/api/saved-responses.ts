@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '@/lib/supabaseClient'
+import { supabase } from '../../lib/supabaseClient'
 
 export default async function handler(
   req: NextApiRequest,
@@ -15,6 +15,7 @@ export default async function handler(
       if (error) throw error
       return res.status(200).json(data)
     } catch (error) {
+      console.error('Failed to fetch saved responses:', error)
       return res.status(500).json({ error: 'Failed to fetch saved responses' })
     }
   }
@@ -37,6 +38,7 @@ export default async function handler(
       if (error) throw error
       return res.status(201).json(data)
     } catch (error) {
+      console.error('Failed to save response:', error)
       return res.status(500).json({ error: 'Failed to save response' })
     }
   }
@@ -52,6 +54,7 @@ export default async function handler(
       if (error) throw error
       return res.status(200).json({ message: 'Response deleted successfully' })
     } catch (error) {
+      console.error('Failed to delete response:', error)
       return res.status(500).json({ error: 'Failed to delete response' })
     }
   }

@@ -2,17 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add smooth transitions for theme changes */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-duration: 300ms;
+@layer base {
+  h1 {
+    font-family: var(--font-fraunces);
+  }
 }
 
-/* Theme-specific styles */
 :root {
-  color-scheme: light;
-}
-
-:root[class~="dark"] {
-  color-scheme: dark;
+  --font-fraunces: 'Fraunces', serif;
 } 
