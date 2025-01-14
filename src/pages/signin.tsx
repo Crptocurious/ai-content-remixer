@@ -8,6 +8,7 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,15 +30,12 @@ export default function SignIn() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    try {
-      // Here you would implement Google OAuth
-      // For now, let's simulate a successful sign-in
-      localStorage.setItem('user', JSON.stringify({ email: 'google-user@example.com' }));
-      router.push('/content');
-    } catch (err) {
-      setError('Failed to sign in with Google. Please try again.');
-    }
+  const handleGoogleSignIn = () => {
+    setShowPopup(true);
+    // Hide popup after 3 seconds
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 3000);
   };
 
   return (
@@ -65,6 +63,13 @@ export default function SignIn() {
         {error && (
           <div className="bg-red-50 text-red-500 p-3 rounded-lg text-sm text-center">
             {error}
+          </div>
+        )}
+
+        {/* Popup Message */}
+        {showPopup && (
+          <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg text-sm animate-fade-in-down">
+            Coming soon! Please sign in using email and password until then.
           </div>
         )}
 
@@ -130,13 +135,6 @@ export default function SignIn() {
             >
               Sign In
             </button>
-
-            <div className="text-center text-sm text-gray-600">
-              <span>Don't have an account? </span>
-              <Link href="/signup" className="text-[#4339F2] hover:underline font-medium">
-                Sign Up
-              </Link>
-            </div>
           </form>
         </div>
       </div>
